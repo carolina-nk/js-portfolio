@@ -1,8 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin"); //HTML
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin"); //CSS
-const CSSMinimizerPlugin = require("css-minimizer-webpack-plugin"); //optimizar CSS
-const TerserPlugin = require("terser-webpack-plugin"); //optimizar JS
 const Dotenv = require("dotenv-webpack"); //variables de entorno
 
 module.exports = {
@@ -64,12 +62,5 @@ module.exports = {
             filename: "assets/[name].[contenthash].css"
         }),
         new Dotenv(),
-    ],
-    optimization: {
-		minimize: true,
-		minimizer: [
-			new CSSMinimizerPlugin(),
-			new TerserPlugin()
-		]
-	}
+    ]
 }
