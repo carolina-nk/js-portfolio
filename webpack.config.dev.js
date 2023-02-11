@@ -11,6 +11,9 @@ module.exports = {
         assetModuleFilename: "assets/images/[hash][ext][query]",
         clean: true
     },
+    mode: "development",
+    //devtool: 'source-map',
+    devtool: 'inline-source-map',
     resolve: {
         extensions: [".js"],
         alias: {
@@ -61,6 +64,13 @@ module.exports = {
         new MiniCSSExtractPlugin({
             filename: "assets/[name].[contenthash].css"
         }),
-        new Dotenv(),
-    ]
+        new Dotenv()
+    ],
+    devServer: {
+        static: path.join(__dirname, "dist"),
+        compress: true,
+        historyApiFallback: true,
+        port: 8080,
+        open: true
+    }
 }
